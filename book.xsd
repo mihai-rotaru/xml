@@ -10,7 +10,7 @@
                 <xs:element name="character" maxOccurs="unbounded">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="name"             type="xs:string" > 
+                            <xs:element name="name"             type="xs:string" /> 
                             <xs:element name="friend-of"        type="xs:string" minOccurs="0" /> 
                             <xs:element name="since"            type="xs:string" /> 
                             <xs:element name="qualification"    type="xs:string" /> 
@@ -26,7 +26,12 @@
                     </xs:restriction>
                 </xs:simpleType>
             </xs:attribute>
-
         </xs:complexType>
+
+        <xs:unique name="unique_character_name">
+            <xs:selector xpath="./character"/>
+            <xs:field xpath="name"/>
+        </xs:unique>
+
     </xs:element>
 </xs:schema>
