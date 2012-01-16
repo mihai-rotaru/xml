@@ -26,11 +26,11 @@
 
     <xs:element name="folder" >
         <xs:complexType>
-            <xs:attribute name="name" type="xs:string" use="required"/>
             <xs:sequence>
                 <xs:element ref="folder" maxOccurs="unbounded" minOccurs="0" />
                 <xs:element ref="bookmark" maxOccurs="unbounded" minOccurs="0" />
             </xs:sequence>
+            <xs:attribute name="name" type="xs:string" use="required"/>
         </xs:complexType>
     </xs:element>
 
