@@ -48,16 +48,17 @@ function getMethods(obj) {
 function print_bookmarks_folder( my_xmlObject )
 {
     var folders = my_xmlObject.getElementsByTagName( "folder" );
+    var html_code = "";
     for( var i = 0; i < folders.length; i++ )
     {
         folder = folders[i];
-        window.write( "Folder: " + folder.getAttribute( "name" ) );
-        //window.write( ( "Folder: " + folder) );
-        window.write( "<ul>" );
+        html_code += "Folder: " + folder.getAttribute( "name" );
+        //html_code+=( "Folder: " + folder);
+        html_code += "<ul>";
 
         //print_bookmarks_folder( folder );
 
-        window.write( "</ul>" );
+        html_code += "</ul>";
     }
 
     console.info("SAAAAAAAAAAAAAAAA");
@@ -84,6 +85,7 @@ function print_bookmarks_folder( my_xmlObject )
         //document.write( "</a></li>" );
     }
     console.info("EEEEEEEEEEEEEXITING");
+    document.getElementById("test").innerHTML = html_code;
 }
 
 function make_list( xmlDoc )
