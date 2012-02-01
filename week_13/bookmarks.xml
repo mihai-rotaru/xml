@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bookmarks>
+
+    <folder name="Social">
+
+        <folder name="Other">
+            <bookmark>
+                <url>http://www.myspace.com</url>
+                <title>MySpace</title>
+                <date>19-02-2001</date>
+            </bookmark>
+        </folder>
+
+        <bookmark>
+            <url>http://www.facebook.com</url>
+        	<title>Facebook</title>
+        	<date>19-02-2011</date>
+        </bookmark>
+
+    </folder>
+    
+    <bookmark>
+        <url>http://www.bbc.co.uk</url>
+        <title>BBC</title>
+        <date>01-01-2012</date>
+    </bookmark>
+
+</bookmarks>
