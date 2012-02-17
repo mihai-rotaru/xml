@@ -1,0 +1,22 @@
+Lab exercises for week 14
+=========================
+
+1.	An XML document contains the sentence “The grand old Duke of York, he had 10000 men.” Would XPath be able to extract the piece of data “10000” from such a document?
+2.	What do the following XPath expressions mean?
+    a. `/libro/sezione`
+        Select all `sezione` elements in `libro` elements; `libro` must be in the root.
+    
+    b. `/libro/sezione[2]`
+        Select the second `sezione` element inside the `libro` element.
+
+    c. `../libro/sezione`
+        Select the `sezione` element that is in a `libro` element in the parent folder of the current element.
+
+    d. `/child::libro/child::sezione/descendant::parágrafo[1]`
+        Select the first `parágrafo` element inside `sezione`, inside `libro`.
+
+3.	Is there any difference between the two XPath expressions:
+    `/libro/sezione[@numero]` and `/libro/sezione/@numero` ? If so, what?
+        The first one will return all `sezione` elements which have an `numero` attribute, and which are
+        inside the `libro` element in the root. The second one will select the value of the `numero` attribute
+        for each of the `sezione` element inside `libro` elements inside the root.

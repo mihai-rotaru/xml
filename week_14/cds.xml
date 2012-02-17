@@ -1,0 +1,37 @@
+<?xml version= "1.0" ?>
+<!--<!DOCTYPE book SYSTEM "musicList.dtd">-->
+<!--<?xml-stylesheet href="stylesheet04.css" type="text/css"?>-->
+<musicList 
+    number="2" title="miscellaneous CDs" 
+    xmlns:cdlist="http://middlesex_press.co.uk/CDcollection">
+    <cd number="711">
+        <title>The Best of Ivor Cutler</title>
+        <artist>Ivor Cutler</artist>
+        <tracks total="19"/>
+        <cdlist:refnum> POL767 </cdlist:refnum>
+    </cd>
+    <cd number="712">
+        <title>Penderecki's First Symphony</title>
+        <artist>Middlesex Symphony Orchestra</artist>
+        <tracks total="5"/>
+        <cdlist:refnum> DGM987 </cdlist:refnum>
+    </cd>
+    <cd number="713">
+        <title>Penderecki's Last Symphony</title>
+        <artist>Middlesex Symphony Orchestra</artist>
+        <cdlist:refnum> DGM988 </cdlist:refnum>
+        <tracks total="5"/>
+    </cd>
+    <cd number="714">
+        <title>Boris the Spider Rides Again</title>
+        <artist>The Renegades</artist>
+        <cdlist:refnum> CHR328 </cdlist:refnum>
+        <tracks total="19"/>
+    </cd>
+    <cd >
+        <title>aosidjasoidaosidj</title>
+        <artist>Middlesex Symphony Orchestra</artist>
+        <cdlist:refnum> DGM988 </cdlist:refnum>
+        <tracks total="5"/>
+    </cd>
+</musicList>
