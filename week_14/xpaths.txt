@@ -1,7 +1,8 @@
 Lab exercises for week 14
 =========================
 
-1.	An XML document contains the sentence “The grand old Duke of York, he had 10000 men.” Would XPath be able to extract the piece of data “10000” from such a document?
+1.	An XML document contains the sentence "The grand old Duke of York, he had 10000 men." Would XPath be able to extract the piece of data "10000" from such a document?
+
 2.	What do the following XPath expressions mean?
     a. `/libro/sezione`
         Select all `sezione` elements in `libro` elements; `libro` must be in the root.
@@ -12,11 +13,42 @@ Lab exercises for week 14
     c. `../libro/sezione`
         Select the `sezione` element that is in a `libro` element in the parent folder of the current element.
 
-    d. `/child::libro/child::sezione/descendant::parágrafo[1]`
-        Select the first `parágrafo` element inside `sezione`, inside `libro`.
+    d. `/child::libro/child::sezione/descendant::paragrafo[1]`
+        Select the first `paragrafo` element inside `sezione`, inside `libro`.
 
 3.	Is there any difference between the two XPath expressions:
     `/libro/sezione[@numero]` and `/libro/sezione/@numero` ? If so, what?
         The first one will return all `sezione` elements which have an `numero` attribute, and which are
         inside the `libro` element in the root. The second one will select the value of the `numero` attribute
         for each of the `sezione` element inside `libro` elements inside the root.
+
+4. Provide XPath expressions which will do the following:
+    a. Select all the elements subordinate to the root node.
+        There are more than one way of doing it:
+        1. `/`
+        2. `/*`
+        3. `*`
+        Not sure about these:
+        1. `descendant::*`
+        2. `//*`
+        (they seem to produce the same output, but it different from `/*`)
+    
+    b. Select all `track` elements that have a `total` attribute with the value of 5.
+
+        NOTE:
+        In the example xml document, there are no `track` elements, but `tracks`.
+
+        `//tracks[@total=5]`
+        
+    c. Select all elements that contain the word "Penderecki" in their title.
+        `//*[contains(title,"Penderecki")]`
+    
+    d. Select any elements that have `title` with greater than 11 characters.
+        `//*[string-length(title)>11]`, easy enough; however, when attempting
+        to find all elements with the `title` having less than 11 characters, it
+        is important to test for it's existence: `//*[title and string-length(title)<11]`.
+        This is because `string-length(title)<11` will evaluate to true for elements
+        without a `title`.
+    
+    e. Select all the siblings of the first `cd` element.
+        `/musicList/cd[1]/following-sibling::*`
