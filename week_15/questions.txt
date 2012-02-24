@@ -1,0 +1,40 @@
+Quick questions:
+1.	The XSL family of languages can use a stylesheet to transform an XML
+document into an HTML document, which can be displayed by a web browser, with
+sophisticated formatting that takes account of the special features of the
+information in the XML document. Some web programmers, however, prefer to use a
+CSS stylesheet to look after the formatting of the XML document. Why?
+
+-----
+Perhaps the primary reason is familiarity - many more programmers know
+CSS than XSL, and therefore preffer this technology to unfamiliar methods.
+-----
+
+2.Sometimes, you will see an XSL stylesheet whose namespace declaration looks like this:
+
+-----
+<xsl:stylesheet version="1.0"
+xmlns:xsl=http://www.w3.org/1999/XSL/Transform>
+-----
+
+And sometimes you will see an XSL stylesheet whose namespace declaration looks like this:
+
+-----
+<xsl:transform version="1.0"
+xmlns:xsl=http://www.w3.org/1999/XSL/Transform>
+-----
+
+What difference does this make to the functioning of the stylesheet?
+
+----
+It doesn't make any difference; they are synonymous.
+(http://www.w3schools.com/xsl/el_stylesheet.asp)
+----
+
+3.	In XSL, what is the difference between "pull" transformations and "push" transformations?
+----
+http://www.ibm.com/developerworks/xml/library/x-xdpshpul.html
+----
+
+
+

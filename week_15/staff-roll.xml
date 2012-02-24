@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="stylingXSL.xsl"?>
+
+<staff-roll xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <post type="surgeon">
+        <name>Joe White</name>
+        <departmental-jobs>
+            <department dept="thoracic">
+                <joined>2009</joined>
+                <duties>heart surgery</duties>
+            </department>
+        </departmental-jobs>
+    </post>
+    <post type="theatre sister">
+        <name>R. Kaur</name>
+    </post>
+    <post type="nurse">
+        <name>A. Adeleke</name>
+        <departmental-jobs>
+            <department dept="thoracic">
+                <joined>2010</joined>
+                <duties>general ward nursing
+                </duties>
+            </department>
+        </departmental-jobs>
+    </post>
+    <post type="nurse">
+        <name>D. Borg </name>
+        <departmental-jobs>
+            <department dept="general surgery">
+                <joined>2005</joined>
+                <duties>general ward nursing</duties>
+            </department>
+            <department dept="thoracic">
+                <joined>2005</joined>
+                <duties>general ward nursing
+                </duties>
+            </department>
+        </departmental-jobs>
+    </post>
+    <post type="IC specialist">
+        <name>E. Said </name>
+    </post>
+</staff-roll>
