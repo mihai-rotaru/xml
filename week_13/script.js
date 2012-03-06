@@ -7,8 +7,6 @@ function loadXMLDoc(docname)
 
     xhttp.open("GET",docname,false);
     xhttp.send("");
-    console.info( "xhttp: " + xhttp );
-    console.info( "xhttp.responseXML: " + xhttp.responseXML );
     return xhttp.responseXML;
 }
 
@@ -45,6 +43,33 @@ function getMethods(obj) {
     return result;
 }
 
+// check if the next sibling node is an element node
+// from: http://www.w3schools.com/dom/prop_element_nextsibling.asp
+// ---------------------------------------------------------------
+// Node types:
+// 1 	ELEMENT_NODE
+// 2 	ATTRIBUTE_NODE
+// 3 	TEXT_NODE
+// 4 	CDATA_SECTION_NODE
+// 5 	ENTITY_REFERENCE_NODE
+// 6 	ENTITY_NODE
+// 7 	PROCESSING_INSTRUCTION_NODE
+// 8 	COMMENT_NODE
+// 9 	DOCUMENT_NODE
+// 10 	DOCUMENT_TYPE_NODE
+// 11 	DOCUMENT_FRAGMENT_NODE
+// 12 	NOTATION_NODE
+// ---------------------------------------------------------------
+function get_nextsibling(n)
+{
+    x=n.nextSibling;
+    while (x.nodeType!=1)
+    {
+        x=x.nextSibling;
+    }
+    return x;
+}
+
 function print_bookmarks_folder( my_xmlObject )
 {
     var folders = my_xmlObject.getElementsByTagName( "folder" );
@@ -52,53 +77,31 @@ function print_bookmarks_folder( my_xmlObject )
     for( var i = 0; i < folders.length; i++ )
     {
         folder = folders[i];
+        html_code += "<hr/>";
         html_code += "Folder: " + folder.getAttribute( "name" );
-        //html_code+=( "Folder: " + folder);
         html_code += "<ul>";
-
-        //print_bookmarks_folder( folder );
-
         html_code += "</ul>";
     }
 
-    console.info("SAAAAAAAAAAAAAAAA");
     bookmarks = my_xmlObject.getElementsByTagName( "bookmark" );
-    //bookmarks = my_xmlObject.
-    console.info("length: " + bookmarks.length );
+    console.info(bookmarks);
     //for( bookmark in bookmarks )
     for( var j=0; j<bookmarks.length; j++ )
     {
         console.info( "j = " + j );
         bookmark = bookmarks[j];
-        console.info( bookmark );
-        //console.info( getMethods( bookmark ));
-        console.info( bookmark.getElementsByTagName );
-        console.info( bookmark.getElementsByTagName("title") );
-        console.info( getMethods(bookmark.getElementsByTagName("title")));
-        console.info("bookmark: " + bookmark.getElementsByTagName("title")[0].nodeValue );
-        //document.write( "<li>" );
-        //document.write( bookmark.getElementsByTagName("title")[0].nodeValue );
-        //document.write( "<a href=\"" );
-        //document.write( bookmark.getElementsByTagName("url")[0].nodeValue );
-        //document.write( "\"" );
-        //document.write( bookmark.getElementsByTagName("url")[0].nodeValue );
-        //document.write( "</a></li>" );
+        console.info( bookmark.getElementsByTagName( "title" )[0].textContent );
     }
-    console.info("EEEEEEEEEEEEEXITING");
     document.getElementById("test").innerHTML = html_code;
 }
 
 function make_list( xmlDoc )
 {
-    //    document.write( xmlDoc.getElementsByTagName( "*" );
-    //    document.write( xmlDoc )
     print_bookmarks_folder( xmlDoc );
-    console.info("------------ exiting make_list");
 }
 
 function say_hello()
 {
     var xmlDoc=loadXMLDoc("bookmarks.xml");
     make_list( xmlDoc );
-    console.info("------------ exiting say_hello");
 }
