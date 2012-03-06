@@ -44,7 +44,6 @@ function getMethods(obj) {
 }
 
 // check if the next sibling node is an element node
-// from: http://www.w3schools.com/dom/prop_element_nextsibling.asp
 // ---------------------------------------------------------------
 // Node types:
 // 1 	ELEMENT_NODE
@@ -60,48 +59,62 @@ function getMethods(obj) {
 // 11 	DOCUMENT_FRAGMENT_NODE
 // 12 	NOTATION_NODE
 // ---------------------------------------------------------------
-function get_nextsibling(n)
+function get_nextsibling( node )
 {
-    x=n.nextSibling;
-    while (x.nodeType!=1)
+    x = node.nextSibling;
+    while( x && x.nodeType != 1 )
     {
-        x=x.nextSibling;
+        x = x.nextSibling;
     }
     return x;
 }
 
-function print_bookmarks_folder( my_xmlObject )
+// check if the first node is an element node
+function get_firstchild( node )
 {
-    var folders = my_xmlObject.getElementsByTagName( "folder" );
-    var html_code = "";
-    for( var i = 0; i < folders.length; i++ )
+    x = node.firstChild;
+    while( x && x.nodeType !=1 )
     {
-        folder = folders[i];
-        html_code += "<hr/>";
-        html_code += "Folder: " + folder.getAttribute( "name" );
-        html_code += "<ul>";
-        html_code += "</ul>";
+        x = x.nextSibling;
     }
-
-    bookmarks = my_xmlObject.getElementsByTagName( "bookmark" );
-    console.info(bookmarks);
-    //for( bookmark in bookmarks )
-    for( var j=0; j<bookmarks.length; j++ )
-    {
-        console.info( "j = " + j );
-        bookmark = bookmarks[j];
-        console.info( bookmark.getElementsByTagName( "title" )[0].textContent );
-    }
-    document.getElementById("test").innerHTML = html_code;
+    return x;
 }
 
-function make_list( xmlDoc )
+var html_code = "";
+function print_folder( xml_fragment )
 {
-    print_bookmarks_folder( xmlDoc );
+    if( xml_fragment.nodeType != 9 && xml_fragment.hasAttribute( "name" ))
+        html_code += "Folder: " + xml_fragment.getAttribute( "name" );
+
+    html_code += "<ul>";
+
+    if( xml_fragment.hasChildNodes )
+    {
+        // iterate over top-level child elements. Recursively call 'print_folder'
+        // for 'folder' elements, and print all 'bookmark' elements.
+        var el = get_firstchild( xml_fragment );
+        while( el )
+        {
+            if( el.nodeName == 'folder' || el.nodeName == 'bookmarks' )
+                print_folder( el );
+            else if( el.nodeName == 'bookmark' )
+            {
+                html_code += "<li>";
+                html_code += "<a href=\"" + el.getElementsByTagName("url")[0].textContent + "\">";
+                html_code += el.getElementsByTagName("title")[0].textContent + "</a>"
+                html_code += "</li>";
+            }
+            el = get_nextsibling( el );
+        }
+    }
+    html_code += "</ul>";
 }
 
 function say_hello()
 {
     var xmlDoc=loadXMLDoc("bookmarks.xml");
-    make_list( xmlDoc );
+    hook = document.getElementById("test");
+    html_code = "";
+    print_folder( xmlDoc );
+    hook.innerHTML = html_code;
 }
