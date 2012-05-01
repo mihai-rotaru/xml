@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Challenge:
+Collect all links in the document (XHTML elements of type a, which are attached to the namespace "http://www.w3.org/1999/xhtml") which are opened in a new window (attribute "target=_new").
+
+Desired selection (XML-output)
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+    <a href="http://www.google.de/" target="_new" xmlns="http://www.w3.org/1999/xhtml">http://www.google.de/Google</a>
+    <a href="http://picasa.google.de/intl/de/" target="_new" xmlns="http://www.w3.org/1999/xhtml">Picasa</a>
+    <a href="http://www.heise.de/" target="_new" xmlns="http://www.w3.org/1999/xhtml">Heise</a>
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+-->
+
+<document
+   link="http://learn.onion.net/language=en/taps=35426/35694"
+   title="Selecting all links which open a new window"
+   id="1">
+  <content>
+    <html xmlns="http://www.w3.org/1999/xhtml">
+      <head>
+      </head>
+      <body>
+        <div>
+          <ul>
+            <li><a href="http://www.google.de/" target="_new">http://www.google.de/Google</a>
+              <ul>
+                <li><a href="http://earth.google.de/">Google Earth</a></li>
+                <li><a href="http://picasa.google.de/intl/de/" target="_new">Picasa</a></li>
+              </ul>
+            </li> 
+            <li><a href="http://www.heise.de/" target="_new">Heise</a></li> 
+            <li><a href="http://www.yahoo.de/">Yahoo</a></li> 
+          </ul>
+        </div>
+      </body>
+    </html>
+  </content>
+</document>
+
+
+<!--
+Solution:
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+Using the 'x' namepsace prefix:
+- - - - - - - - - - - - - - - -
+//x:a[@target='_new']
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+Without using the prefix:
+- - - - - - - - - - - - -
+//*[local-name()='a' and namespace-uri()='http://www.w3.org/1999/xhtml' and @target='_new']
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
+Notes
+-~-~-
+Namespaces can be tricky in XML; see this article for a nice explanation:
+http://msdn.microsoft.com/en-us/library/ms950779.aspx
+
+This query: `//a` will not work; because an ancestor has a default namespace
+- in this case the `html` element - all its children will automatically be placed
+in that namespace. So, all the `a` elements inside `html` are really
+`http://www.w3.org/1999/xhtml:a` elements. This is the reason `//a` will not
+select them.
+ -->

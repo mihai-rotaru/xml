@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+Challenge:
+Changing small to capital letters
+-->
+
+<text
+    link="http://learn.onion.net/language=en/taps=35426/35698"
+    title="Changing small to capital letters">
+    this is a test</text>
+
+<!--
+Solution:
+
+XPath 1.0:
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+    translate(
+        translate(
+            translate(
+                translate(
+                    translate(
+                        translate(
+                            text,'t','T'),
+                                'h','H'),
+                                    'i','I'),
+                                        's','S'),
+                                            'a','A'),
+                                                'e','E')
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
+XPath 2.0:
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+upper-case(text)
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~

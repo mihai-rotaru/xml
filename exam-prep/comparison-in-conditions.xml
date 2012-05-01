@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Challenge:
+Select all job elements with an exceeded budget.
+
+Desired selection (XML-output)
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+    <job name="cut Screens" availableBudget="8">
+        <work usedBudget="3">Conception</work>
+        <work usedBudget="3">Implementation</work>
+        <work usedBudget="2.5">Implementation</work>
+    </job>
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+-->
+
+<jobs
+    link="http://learn.onion.net/language=en/taps=35426/35692"
+    title="Comparisons in conditions">
+  <job name="cut Screens" availableBudget="8">
+    <work usedBudget="3">Conception</work>
+    <work usedBudget="3">Implementation</work>
+    <work usedBudget="2.5">Implementation</work>
+  </job>
+  <job name="build HTML-demonstration" availableBudget="6">
+    <work usedBudget="1.5">Conception</work>
+    <work usedBudget="2.5">Implementation</work>
+    <work usedBudget="2">Implementation</work>
+  </job>
+  <job name="CMS implementation" availableBudget="12">
+    <work usedBudget="1">Data model</work>
+    <work usedBudget="4">Editor-Customizing</work>
+    <work usedBudget="4">Transformations</work>
+    <work usedBudget="2">QS</work>
+  </job>
+</jobs>
+
+<!--
+Solution:
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+/jobs/job[sum(work/@usedBudget)>@availableBudget]
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+-->

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+Challenge:
+Calculate the title number using its position.
+
+Desired selection (text output)
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+5
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+-->
+<artist
+    link="http://learn.onion.net/language=en/taps=35426/35696"
+    title="Calculating position"
+    name="Robbie Williams">
+  <cd name="Rudebox"> 
+    <title>Rudebox</title>
+    <title>Viva Life On Mars</title>
+    <title>Lovelight (Lewis Taylor Cover)</title>
+    <title>King Of The Bongo (Manu Chao Cover)</title>
+    <title>Swing when you're winning</title>
+    <title>Good Doctor</title>
+  </cd> 
+</artist>
+
+<!--
+Solution:
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+count(preceding-sibling::*)+1
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+-->

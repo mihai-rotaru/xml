@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- XPath exercise from: http://learn.onion.net/language=en/taps=35426/35712
+
+Change the XML representation into a comma-separated variant.
+Desired selection (text output)
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+1;"Hans";"Peter";44
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
+ -->
+<row>
+  <cell name="id">1</cell>
+  <cell name="firstName">Hans</cell>
+  <cell name="lastName">Peter</cell>
+  <cell name="age">44</cell>
+</row>
+
+<!--
+Solution:
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+concat( concat(cell[1],';'), 
+    concat(  concat( '"', concat( cell[2],'";')),
+        concat( concat( '"', cell[3],'";'),
+                cell[4]
+            )
+        )
+    )
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
+Comment
+=~=~=~=
+
+This is a rather bad example. Or, rather, the accepted solution is not the best
+one.  First of all, it requires hardcoding the indexes, which is a bad
+practice. What if another attribute is added before the "id" attribute ? The
+indexes in the whole query would have to be updated. Second, the way in which
+`concat` is used is also contrived - but that's because the overall approach
+is wrong.
+
+Normally, transforming a file with the structure described above to CSV would
+be accomplished using a `for-each`, and the value of each required element would
+be selected in a `choose` statement.
+ -->

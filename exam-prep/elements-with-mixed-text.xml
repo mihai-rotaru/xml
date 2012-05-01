@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 
+XPath exercise from: http://learn.onion.net/language=en/taps=35426/35702
+
+Challenge:
+Output all item-elements that are specified in "px" and do not exceed the value of 70.
+
+NOTE: `ends-with()` is a function of XPath 2.0. onion.net
+currently only supports functions from XPath 1.0.
+
+Desired selection (XML-output):
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+    <item width="25px" />
+    <item width="50px" />
+    <item width="65px" />
+    <item width="25px" />
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+-->
+
+<items>
+  <item width="25px" />
+  <item width="50px" />
+  <item width="65px" />
+  <item width="100px" />
+  <item width="15pt" />
+  <item width="40%" />
+  <item width="25px" />
+</items>
+
+<!--
+Solution:
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+items/item[number(substring-before(@width, 'px')) < 70]
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
+TESTING
+
+with xml-starlet:
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+C:\>xml sel -t -m "items/item[number(substring-before(@width, 'px')) < 70]" -c "." -n items.xml
+<item width="25px"/>
+<item width="50px"/>
+<item width="65px"/>
+<item width="25px"/>
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
+with xmllint:
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+C:\>xmllint.exe -~shell items.xml
+/ > xpath items/item[number(substring-before(@width, 'px')) < 70]
+Object is a Node Set :
+Set contains 4 nodes:
+1  ELEMENT item
+    ATTRIBUTE width
+      TEXT
+        content=25px
+2  ELEMENT item
+    ATTRIBUTE width
+      TEXT
+        content=50px
+3  ELEMENT item
+    ATTRIBUTE width
+      TEXT
+        content=65px
+4  ELEMENT item
+    ATTRIBUTE width
+      TEXT
+        content=25px
+/ >
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+-->

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+XPath exercise from: http://learn.onion.net/language=en/taps=35426/35710
+
+Challenge:
+Select all elements attached to a namespace below “http://www.getit.de/”.
+
+Desired selection (XML-output)
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+    <item_a value="A" xmlns="http://www.getit.de/2006/" />
+    <item_b value="B" xmlns="http://www.getit.de/2005/" />
+    <item_c value="C" xmlns="http://www.getit.de/2004/" />
+    <item_d value="D" xmlns="http://www.getit.de/2003/" />
+    <item_e value="E" xmlns="http://www.getit.de/2002/" />
+    <item_f value="F" xmlns="http://www.getit.de/2001/" />
+    <item_g value="G" xmlns="http://www.getit.de/2000/" />
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+-->
+
+<items>
+  <item_a xmlns="http://www.getit.de/2006/" value="A" />
+  <item_b xmlns="http://www.getit.de/2005/" value="B" />
+  <item_c xmlns="http://www.getit.de/2004/" value="C" />
+  <item_d xmlns="http://www.getit.de/2003/" value="D" />
+  <item_e xmlns="http://www.getit.de/2002/" value="E" />
+  <item_f xmlns="http://www.getit.de/2001/" value="F" />
+  <item_g xmlns="http://www.getit.de/2000/" value="G" />
+  <item_h xmlns="http://www.isa-team.de/2002/" value="H" />
+  <item_i xmlns="http://www.isa-team.de/2001/" value="I" />
+  <item_j xmlns="http://www.isa-team.de/2000/" value="J" />
+</items>
+
+<!--
+Solution:
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+items/*[starts-with(namespace-uri(),"http://www.getit.de/")]
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+-->

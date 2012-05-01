@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+XPath exercise from: http://learn.onion.net/language=en/taps=35426/35704
+
+Challenge:
+Output all item elements which are specified in "px" and do not exceed the value of 70
+
+Desired selection (XML-output):
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+    <item width="25" unit="px" />
+    <item width="50" unit="px" />
+    <item width="65" unit="px" />
+    <item width="25" unit="px" />
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
+-->
+
+<items>
+  <item width="25" unit="px" />
+  <item width="50" unit="px" />
+  <item width="65" unit="px" />
+  <item width="100" unit="px" />
+  <item width="15" unit="pt" />
+  <item width="40" unit="%" />
+  <item width="25" unit="px" />
+</items>
+
+<!--
+Solution:
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+items/item[@unit='px' and @width<70]
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+-->

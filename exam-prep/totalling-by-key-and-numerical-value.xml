@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+XPath exercise from: http://learn.onion.net/language=en/taps=35426/35706
+
+Challenge:
+Add up all width-properties of the item-elements that are specified in "px" and do not exceed the value of 70
+
+Desired selection (text output)
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+165
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
+-->
+
+<items>
+  <item width="25" unit="px" />
+  <item width="50" unit="px" />
+  <item width="65" unit="px" />
+  <item width="100" unit="px" />
+  <item width="15" unit="pt" />
+  <item width="40" unit="%" />
+  <item width="25" unit="px" />
+</items>
+
+<!--
+Solution:
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+sum(/items/item[@unit='px' and @width < 70]/@width)
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
+Note: this XPath evaluates to a number, not a node set.
+
+-->

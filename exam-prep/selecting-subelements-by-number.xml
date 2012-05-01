@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+XPath exercise from: http://learn.onion.net/language=en/taps=35426/35708
+
+Challenge:
+Select all band or artist elements containing only one CD.
+
+Desired selection (XML-output)
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+    <band>
+        <name>Juli</name>
+        <cds>
+            <cd>Ein neuer Tag</cd>
+        </cds>
+    </band>
+
+    <band>
+        <name>Silbermond</name>
+        <cds>
+            <cd>Verschwende deine Zeit</cd>
+        </cds>
+    </band>
+
+    <artist>
+        <name>Michael Jackson</name>
+        <cds>
+            <cd>Bad</cd>
+        </cds>
+    </artist>
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
+-->
+
+<collection>
+  <artist>
+    <name>Robbie Williams</name>
+    <cds>
+      <cd>Rudebox</cd>
+      <cd>Viva Life On Mars</cd>
+      <cd>Lovelight (Lewis Taylor Cover)</cd>
+      <cd>King Of The Bongo (Manu Chao Cover)</cd>
+      <cd>Swing when you're winning</cd>
+      <cd>Good Doctor</cd>
+    </cds>
+  </artist>
+  <band>
+    <name>Juli</name>
+    <cds>
+      <cd>Ein neuer Tag</cd>
+    </cds>
+  </band>
+  <band>
+    <name>Silbermond</name>
+    <cds>
+      <cd>Verschwende deine Zeit</cd>
+    </cds>
+  </band>
+  <artist>
+    <name>Michael Jackson</name>
+    <cds>
+      <cd>Bad</cd> 
+    </cds>
+  </artist>
+</collection>
+
+<!--
+Solution:
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+/collection/*[(name()='band' or name()='artist') and count(cds/cd)=1]
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
+Note: the nodes to count must not have quotes around them; if count was used like
+this: `count('cds/cd')`, then the XPath would result in "Invalid type", "Objects
+left on stack" errors in both xmllint and xmlstar.
+-->

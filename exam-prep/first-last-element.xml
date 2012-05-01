@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Challenge:
+Output the name of the first-listed CD by the last artist in the list.
+
+Desired selection (text output)
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+Bad
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+-->
+
+<collection
+    link="http://learn.onion.net/language=en/taps=35426/35686"
+    title="First and last element">
+  <artist>
+    <name>Robbie Williams</name>
+    <cds>
+      <cd>Rudebox</cd>
+      <cd>Swing when you're winning</cd>
+    </cds>
+  </artist>
+  <band>
+    <name>Juli</name>
+    <cds>
+      <cd>Ein neuer Tag</cd>
+    </cds>
+  </band>
+  <band>
+    <name>Silbermond</name>
+    <cds>
+      <cd>Verschwende deine Zeit</cd>
+    </cds>
+  </band>
+  <artist>
+    <name>Michael Jackson</name>
+    <cds>
+      <cd>Bad</cd>
+      <cd>Thriller</cd>
+    </cds>
+  </artist>
+</collection>
+
+<!-- Solution
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+/collection/artist[last()]/cds/cd[1]
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
+Note: indeed, there's not 'first()' function; yet another counter-intuitive
+asymmetry. Sure, it's not really necessary since the fist element can be easily
+obtained with `[1]`, but still this might be confusing.
+ -->

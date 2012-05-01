@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Challenge:
+Select the text behind the question mark
+
+Desired selection (text output)
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+hl=de&q=getit&meta=
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+-->
+
+<link
+    link="http://learn.onion.net/language=en/taps=35426/35700"
+    title="Selecting querystring">
+    http://www.google.de/search?hl=de&amp;q=getit&amp;meta=
+</link>
+
+<!--
+Solution:
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+substring-after(link,'?')
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
+Note: `substring-after( haystack, needle )` selects text from the first occurence
+of `needle` to the end. This is fine in this case, but if the requirement was to
+extract the extension of a file, for example, then substring-after( filename, '.' )
+would not be reliable, since for a file named 'file.bak.xml' it would return
+'bak.xml, and we only need 'xml'.
+ -->
