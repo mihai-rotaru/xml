@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Challenge:
+Resolve the id-attribute of the div-element nearest to you. The expression selected by you should work at any point within the nested list.
+
+Desired selection (text output)
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+inner
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+-->
+
+<document 
+    link="http://learn.onion.net/language=en/taps=35426/35684"
+    title="Finding surrounding element"
+    id="1">
+  <content>
+    <html xmlns="http://www.w3.org/1999/xhtml">
+      <head>
+      </head>
+      <body>
+        <div id="outer">
+          <div id="inner">
+            <ul>
+              <li><a href="http://www.google.de/">Google</a>
+                <ul>
+                  <li><a href="http://earth.google.de/">Google Earth</a></li>
+                  <li><a href="http://picasa.google.de/intl/de/">Picasa</a></li>
+                </ul>
+              </li> 
+              <li><a href="http://www.heise.de/">Heise</a></li> 
+              <li><a href="http://www.yahoo.de/">Yahoo</a></li> 
+            </ul>
+          </div>
+        </div>
+      </body>
+    </html>
+  </content>
+</document>
+    
+<!--
+Solution:
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+Using the 'x' namepsace prefix:
+- - - - - - - - - - - - - - - -
+ancestor::x:div[1]/@id
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+Without using the prefix:
+- - - - - - - - - - - - -
+ancestor::*[local-name()='div' and namespace-uri()='http://www.w3.org/1999/xhtml'][1]/@id
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+-->
